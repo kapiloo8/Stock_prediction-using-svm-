@@ -1,2 +1,9 @@
 # Stock_prediction-using-svm-
 The code provided is an implementation of a Support Vector Machine (SVM) model with a radial basis function (RBF) kernel to predict stock prices using daily stock price data of ADANI ENTERPRISES LIMITED (ADANIENT.NS) obtained from Yahoo Finance.
+The code begins by importing the necessary libraries, including Scikit-learn's SVM module, and loading the stock price data into a pandas DataFrame. The date column is then converted to the index column and the original date column is dropped.
+
+Next, predictor variables are created from the daily stock price data by calculating the difference between the opening and closing prices and the difference between the highest and lowest prices for each day. These predictor variables are stored in a variable X. A binary target variable, y, is created by comparing the closing price of each day with the closing price of the next day. If the closing price of the next day is higher, y is set to 1, otherwise, it is set to 0.
+
+The data is then split into training and testing sets using a split percentage of 0.8. A grid search object is created using a range of values for the SVM hyperparameters C and gamma. The SVM model with the RBF kernel is then trained using the training set and the grid search object to find the best hyperparameters. The best SVM model is then used to make predictions on the test set and evaluate the accuracy of the model using the accuracy_score function.
+
+Finally, the best SVM model is used to make predictions on the entire dataset, and the daily returns, strategy returns, and cumulative returns are calculated and plotted. The strategy returns are obtained by multiplying the daily returns with the predicted signal obtained from the SVM model. The cumulative returns of the strategy and the stock price are plotted against the time index.
